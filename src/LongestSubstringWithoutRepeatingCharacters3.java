@@ -21,16 +21,15 @@ public class LongestSubstringWithoutRepeatingCharacters3 {
         int maxLength = 0;
         int startIndex = 0;
         int endIndex = 0;
+        int repeatIndex = -1;//在字串中重复字母的位置
         out:
         while (endIndex < s.length()){
-            endIndex = startIndex+1;
-            maxLength = 0;
             while (endIndex < s.length()){
-                if(s.substring(startIndex,endIndex).indexOf(s.charAt(endIndex)) == -1){
+                if((repeatIndex = s.substring(startIndex,endIndex).indexOf(s.charAt(endIndex))) == -1){
+                    maxLength = Math.max(maxLength,endIndex - startIndex + 1);
                     endIndex++;
-                }else {//有重复
-                    maxLength = Math.max(maxLength,endIndex - startIndex - 1);
-                    startIndex = s.substring(startIndex,endIndex).indexOf(s.charAt(endIndex)) + 1;
+                }else {
+                    startIndex = startIndex + repeatIndex + 1;
                     continue out;
                 }
 
@@ -43,5 +42,6 @@ public class LongestSubstringWithoutRepeatingCharacters3 {
     public static void main(String[] args) {
         LongestSubstringWithoutRepeatingCharacters3 longestSubstringWithoutRepeatingCharacters3 = new LongestSubstringWithoutRepeatingCharacters3();
         System.out.println(longestSubstringWithoutRepeatingCharacters3.lengthOfLongestSubstring("abcabcbb"));
+//        System.out.println("abcabcbb".substring(1,3).indexOf("abcabcbb".charAt(1)));
     }
 }
