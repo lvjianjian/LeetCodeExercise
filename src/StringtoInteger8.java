@@ -17,7 +17,7 @@ public class StringtoInteger8 {
         if (str == null)
             return 0;
         str = str.trim();
-        int r = 0;
+        int sum = 0;
         boolean findSign = false;
         int sign = 1;//符号位
         boolean findInteger = false;
@@ -26,14 +26,14 @@ public class StringtoInteger8 {
             if (a >= '0' && a <= '9') {
                 int digit = sign * (a - '0');
                 //判断是否会超出int最大值范围
-                if (r > Integer.MAX_VALUE / 10
-                        || (r == Integer.MAX_VALUE/10 && digit > Integer.MAX_VALUE % 10)){
+                if (sum > Integer.MAX_VALUE / 10
+                        || (sum == Integer.MAX_VALUE/10 && digit > Integer.MAX_VALUE % 10)){
                     return Integer.MAX_VALUE;
-                }else if(r < Integer.MIN_VALUE / 10
-                        || (r == Integer.MIN_VALUE/10 && digit < Integer.MIN_VALUE % 10) ){
+                }else if(sum < Integer.MIN_VALUE / 10
+                        || (sum == Integer.MIN_VALUE/10 && digit < Integer.MIN_VALUE % 10) ){
                     return Integer.MIN_VALUE;
                 }
-                r = r * 10 + digit;
+                sum = sum * 10 + digit;
                 findInteger = true;
             }else if(a == '-' && !findSign && !findInteger){
                 findSign = true;
@@ -44,7 +44,7 @@ public class StringtoInteger8 {
                 break;
             }
         }
-        return r;
+        return sum;
     }
 
     public static void main(String[] args) {
