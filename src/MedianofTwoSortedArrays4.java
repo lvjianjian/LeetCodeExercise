@@ -20,7 +20,7 @@
 public class MedianofTwoSortedArrays4 {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        double median =0;
+        double median = 0;
 
 
 
