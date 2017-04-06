@@ -4,6 +4,10 @@ import java.util.*;
  * Created by zhongjianlv on 17-4-5.
  *
  * leetcode algorithm 12
+ *
+ * Given an integer, convert it to a roman numeral.
+ * Input is guaranteed to be within the range from 1 to 3999.
+ *
  */
 public class IntegerToRoman12 {
 
