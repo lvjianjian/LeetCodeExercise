@@ -12,7 +12,7 @@
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
  * Output: 7 -> 0 -> 8
  */
-public class AddTwoNumbers2 {
+public class Add_Two_Numbers_2 {
 
     /**
      * Definition for singly-linked list.
@@ -91,12 +91,12 @@ public class AddTwoNumbers2 {
     }
 
     public static void main(String[] args) {
-        AddTwoNumbers2 addTwoNumbers2 = new AddTwoNumbers2();
-        ListNode l1 = addTwoNumbers2.generate(new int[]{2,4,3,1});
-        ListNode l2 = addTwoNumbers2.generate(new int[]{5,6,4,9,1,1});
-        System.out.println(l1);
-        System.out.println(l2);
-        System.out.println(addTwoNumbers2.addTwoNumbers(l1,l2));
+//        AddTwoNumbers2 addTwoNumbers2 = new AddTwoNumbers2();
+//        ListNode l1 = addTwoNumbers2.generate(new int[]{2,4,3,1});
+//        ListNode l2 = addTwoNumbers2.generate(new int[]{5,6,4,9,1,1});
+//        System.out.println(l1);
+//        System.out.println(l2);
+//        System.out.println(addTwoNumbers2.addTwoNumbers(l1,l2));
 
     }
 }
