@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Map;
 
 /**
  * Created by zhongjianlv on 17-4-10.
@@ -12,7 +11,7 @@ import java.util.Map;
  * For example, given array S = {-1 2 1 -4}, and target = 1.
  * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
  */
-public class ThreeSumClosest16 {
+public class Three_Sum_Closest_16 {
 
 
     public int threeSumClosest(int[] nums, int target) {
@@ -67,7 +66,7 @@ public class ThreeSumClosest16 {
     }
 
     public static void main(String[] args) {
-        ThreeSumClosest16 threeSumClosest16 = new ThreeSumClosest16();
+        Three_Sum_Closest_16 threeSumClosest16 = new Three_Sum_Closest_16();
         System.out.println(threeSumClosest16.threeSumClosest(new int[]{0,2,1,-3},1));
     }
 
