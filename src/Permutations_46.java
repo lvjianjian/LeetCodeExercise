@@ -2,6 +2,8 @@ import java.util.*;
 
 /**
  * Created by zhongjianlv on 18-1-2.
+ *
+ * Given a collection of distinct numbers, return all possible permutations.
  */
 public class Permutations_46 {
     public List<List<Integer>> permute(int[] nums) {
