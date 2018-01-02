@@ -4,7 +4,7 @@ import java.util.Map;
 /**
  * Created by zhongjianlv on 17-12-25.
  */
-public class Four_Sum_2_454 {
+public class Four_Sum_II_454 {
 
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
         int num = 0;
