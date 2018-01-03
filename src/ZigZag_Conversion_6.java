@@ -18,7 +18,7 @@
  * "PHASIYIRPLIGAN" (numRows = 5)
  *
  */
-public class ZigZagConversion6 {
+public class ZigZag_Conversion_6 {
 
     public String convert(String s, int numRows) {
         StringBuilder sb = new StringBuilder();
@@ -69,7 +69,7 @@ public class ZigZagConversion6 {
     }
 
     public static void main(String[] args) {
-        ZigZagConversion6 zigZagConversion6 = new ZigZagConversion6();
+        ZigZag_Conversion_6 zigZagConversion6 = new ZigZag_Conversion_6();
         System.out.println(zigZagConversion6.convert("PAYPALISHIRING",3));
     }
 
