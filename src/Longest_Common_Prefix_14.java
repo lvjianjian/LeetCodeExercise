@@ -5,7 +5,7 @@
  *
  *
  */
-public class LongestCommonPrefix14 {
+public class Longest_Common_Prefix_14 {
     /**
      * 两两取最大公共前缀
      * @param strs
@@ -54,7 +54,7 @@ public class LongestCommonPrefix14 {
     }
 
     public static void main(String[] args) {
-        LongestCommonPrefix14 longestCommonPrefix14 = new LongestCommonPrefix14();
+        Longest_Common_Prefix_14 longestCommonPrefix14 = new Longest_Common_Prefix_14();
         System.out.println(longestCommonPrefix14.longestCommonPrefix2(new String[]{"aa","a"}));
     }
 }

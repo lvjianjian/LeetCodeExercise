@@ -9,7 +9,7 @@ import java.util.*;
  * Input is guaranteed to be within the range from 1 to 3999.
  *
  */
-public class IntegerToRoman12 {
+public class Integer_To_Roman_12 {
 
     public static HashMap<Integer,Character> map = new HashMap<>();
 
@@ -54,7 +54,7 @@ public class IntegerToRoman12 {
 
 
     public static void main(String[] args) {
-        IntegerToRoman12 integerToRoman12 = new IntegerToRoman12();
+        Integer_To_Roman_12 integerToRoman12 = new Integer_To_Roman_12();
         System.out.println(integerToRoman12.intToRoman(6));
     }
 }

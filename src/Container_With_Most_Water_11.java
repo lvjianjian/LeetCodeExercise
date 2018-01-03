@@ -7,7 +7,7 @@
  * n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).
  * Find two lines, which together with x-axis forms a container, such that the container contains the most water.
  */
-public class ContainerWithMostWater11 {
+public class Container_With_Most_Water_11 {
 
     /**
      * 短板效应，替换最小边找到最大矩形面积
@@ -31,7 +31,7 @@ public class ContainerWithMostWater11 {
     }
 
     public static void main(String[] args) {
-        ContainerWithMostWater11 containerWithMostWater11 = new ContainerWithMostWater11();
+        Container_With_Most_Water_11 containerWithMostWater11 = new Container_With_Most_Water_11();
         System.out.println(containerWithMostWater11.maxArea(new int[]{68,113,143,194,176,62,158,162,103,75,104,179,189,150,151,180,76
                                                                     ,158,158,19,198,42,119,13,127,158,193,59,146,80,41,15,193,184,161
                                                                     ,121,198,71,83,102,146,139,33,135,89,184,115,117,142,25,136,93,67

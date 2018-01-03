@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Input is guaranteed to be within the range from 1 to 3999.
  *
  */
-public class RomanToInteger13 {
+public class Roman_To_Integer_13 {
     public static HashMap<Character,Integer> map = new HashMap<>();
 
     static {
@@ -49,7 +49,7 @@ public class RomanToInteger13 {
     }
 
     public static void main(String[] args) {
-        RomanToInteger13 romanToInteger13 = new RomanToInteger13();
+        Roman_To_Integer_13 romanToInteger13 = new Roman_To_Integer_13();
         System.out.println(romanToInteger13.romanToInt("CIX"));
     }
 }
