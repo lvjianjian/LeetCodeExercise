@@ -11,7 +11,7 @@
  * Notes: It is intended for this problem to be specified vaguely (ie, no given input specs).
  * You are responsible to gather all the input requirements up front.
  */
-public class StringtoInteger8 {
+public class String_to_Integer_8 {
 
     public int myAtoi(String str) {
         if (str == null)
@@ -48,7 +48,7 @@ public class StringtoInteger8 {
     }
 
     public static void main(String[] args) {
-        StringtoInteger8 stringtoInteger8 = new StringtoInteger8();
+        String_to_Integer_8 stringtoInteger8 = new String_to_Integer_8();
         System.out.println(stringtoInteger8.myAtoi("b-2147483649"));
     }
 }
