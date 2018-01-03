@@ -20,6 +20,7 @@
  */
 public class ZigZag_Conversion_6 {
 
+    //规律题
     public String convert(String s, int numRows) {
         StringBuilder sb = new StringBuilder();
         if(numRows == 1){//为1输出原值
