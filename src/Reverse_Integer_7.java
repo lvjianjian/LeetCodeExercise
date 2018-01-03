@@ -1,8 +1,5 @@
-import org.omg.PortableInterceptor.INACTIVE;
-
 import java.util.LinkedList;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * Created by zhongjian on 2017/4/5.
@@ -19,7 +16,7 @@ import java.util.StringJoiner;
  * The input is assumed to be a 32-bit signed integer.
  * Your function should return 0 when the reversed integer overflows.
  */
-public class ReverseInteger7 {
+public class Reverse_Integer_7 {
 
     /**
      * 通过字符串反转
@@ -71,9 +68,7 @@ public class ReverseInteger7 {
 
 
     public static void main(String[] args) {
-        ReverseInteger7 reverseInteger7 = new ReverseInteger7();
+        Reverse_Integer_7 reverseInteger7 = new Reverse_Integer_7();
         System.out.println(reverseInteger7.reverse2(-12321));
     }
-
-
 }
