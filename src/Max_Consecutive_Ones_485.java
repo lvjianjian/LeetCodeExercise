@@ -25,7 +25,7 @@ public class Max_Consecutive_Ones_485 {
                 if (current > max)
                     max = current;
                 current = 0;
-                if (i + max + 1 >= nums.length)
+                if (i + max + 1 >= nums.length) // 后续不可能产生更多的连续1,终止
                     break;
 
             }
