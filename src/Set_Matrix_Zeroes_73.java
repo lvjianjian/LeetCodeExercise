@@ -9,8 +9,7 @@ import java.util.Set;
 public class Set_Matrix_Zeroes_73 {
 
 
-
-
+    // 可以将记录放在第一行和第一列上，不过先要判断第一行和第一列是否为0行/列
     public void setZeroes(int[][] matrix) {
         Set<Integer> rows = new HashSet<>();
         Set<Integer> cols = new HashSet<>();
