@@ -32,6 +32,18 @@ public class Validate_Binary_Search_Tree_98 {
         }
     }
 
+    public boolean isValidBST2(TreeNode root) {
+        if(root == null) return true;
+        if(root.left == null && root.right == null) return true;
+        return isValidWithBound(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean isValidWithBound(TreeNode root, double low, double high){
+        if(root == null) return true;
+        if(root.val <= low || root.val >= high) return false;
+        return isValidWithBound(root.left, low, root.val) && isValidWithBound(root.right, root.val, high);
+    }
+
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
         Stack<TreeNode> stacks = new Stack<>();
