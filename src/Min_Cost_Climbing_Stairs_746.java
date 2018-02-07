@@ -19,6 +19,14 @@
  */
 
 public class Min_Cost_Climbing_Stairs_746 {
-
-    
+    public int minCostClimbingStairs(int[] cost) {
+        int N = cost.length;
+        int[] mins = new int[N];
+        mins[0] = cost[0];
+        mins[1] = cost[1];
+        for(int i = 2; i < N; ++i){
+            mins[i] = Math.min(mins[i-2],mins[i-1]) + cost[i];
+        }
+        return Math.min(mins[N-2],mins[N-1]);
+    }
 }
