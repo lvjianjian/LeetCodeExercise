@@ -11,7 +11,7 @@
  */
 public class Find_Minimum_in_Rotated_Sorted_Array_II_154 {
 
-    public int findMin(int[] nums) {
+    public int findMin2(int[] nums) {
         int n = nums.length;
         if (n == 0) return 0;
         int min = nums[0];
@@ -20,5 +20,20 @@ public class Find_Minimum_in_Rotated_Sorted_Array_II_154 {
                 min = nums[i];
         }
         return min;
+    }
+
+    public int findMin(int[] nums) {
+        int l=0,r=nums.length-1;
+        while(l<r){
+            int mid=(l+r)>>>1;
+            if(nums[mid]>nums[r]){
+                l=mid+1;
+            }else if(nums[mid]<nums[r]){
+                r=mid;
+            }else{
+                r--;
+            }
+        }
+        return nums[l];
     }
 }
