@@ -17,33 +17,27 @@ import java.util.Set;
 public class All_O_one_Data_Structure_432 {
 
     class Bucket{
-        private Set<String> set;
+        private String s;
         private Bucket previous;
         private Bucket next;
+        private int num;
         public Bucket(){
             previous = null;
             next = null;
-            set = new HashSet<>();
+            s = "";
+            num = 1;
         }
 
-        private void remove(String key){
-            this.set.remove(key);
-            if(this.set.size() == 0){
-                this.previous.next = this.next;
-                this.next.previous = this.previous;
-            }
-        }
+
     }
 
-    private Map<String, Integer> integerMap;
-    private Map<Integer, Bucket> bucketMap;
+    private Map<String, Bucket> map;
     private Bucket min;
     private Bucket max;
 
     /** Initialize your data structure here. */
     public All_O_one_Data_Structure_432() {
-        integerMap = new HashMap<>();
-        bucketMap = new HashMap<>();
+        map = new HashMap<>();
         min = new Bucket();
         max = new Bucket();
         min.next = max;
@@ -53,57 +47,93 @@ public class All_O_one_Data_Structure_432 {
 
     /** Inserts a new key <Key> with value 1. Or increments an existing key by 1. */
     public void inc(String key) {
-        int num = integerMap.getOrDefault(key, 0);
-        if(num != 0) {
-            Bucket bucket = bucketMap.get(num);
-            bucket.remove(key);
-        }
-        num += 1;
-        integerMap.put(key, num);
-        Bucket temp = bucketMap.getOrDefault(num, new Bucket());
-        temp.set.add(key);
-        if(temp.set.size() == 1){
-            temp.next = min.next;
-            temp.previous = min;
-            temp.next.previous = temp;
-            min.next = temp;
+        if(map.containsKey(key)){
+            Bucket bucket = map.get(key);
+            bucket.num+=1;
+            while(!bucket.next.s.equals("")){
+                if(bucket.num > bucket.next.num){//exchange
+                    String temp = bucket.s;
+                    int temp_num = bucket.num;
+                    bucket.num = bucket.next.num;
+                    bucket.s = bucket.next.s;
+                    bucket.next.num = temp_num;
+                    bucket.next.s = temp;
+                    map.put(bucket.s,bucket);
+                    map.put(bucket.next.s,bucket.next);
+                    bucket = bucket.next;
+                }else{
+                    break;
+                }
+            }
         }else{
-
+            Bucket bucket = new Bucket();
+            bucket.s = key;
+            bucket.num = 1;
+            bucket.next = min.next;
+            min.next.previous = bucket;
+            bucket.previous = min;
+            min.next = bucket;
+            map.put(key,bucket);
         }
 
     }
 
     /** Decrements an existing key by 1. If Key's value is 1, remove it from the data structure. */
     public void dec(String key) {
-         int num = integerMap.getOrDefault(key, 0);
-         if(num != 0){
-             Bucket bucket = bucketMap.get(num);
-             bucket.remove(key);
-             num -= 1;
-             integerMap.replace(key, num);
-             if(num > 0){
-                 Bucket temp = bucketMap.getOrDefault(num, new Bucket());
-                 temp.set.add(key);
-                 if(temp.set.size() == 1){
-                     temp.next = min.next;
-                     temp.previous = min;
-                     temp.next.previous = temp;
-                     min.next = temp;
-                 }
-             }
-         }
-
+        if(map.containsKey(key)){
+            Bucket bucket = map.get(key);
+            bucket.num -= 1;
+            if(bucket.num == 0){
+                bucket.previous.next = bucket.next;
+                bucket.next.previous = bucket.previous;
+                bucket.next = null;
+                bucket.previous = null;
+                map.remove(key);
+            }else{
+                while (!bucket.previous.s.equals("")){
+                    if(bucket.previous.num > bucket.num){
+                        String temp = bucket.s;
+                        int temp_num = bucket.num;
+                        bucket.num = bucket.previous.num;
+                        bucket.s = bucket.previous.s;
+                        bucket.previous.num = temp_num;
+                        bucket.previous.s = temp;
+                        map.put(bucket.s,bucket);
+                        map.put(bucket.previous.s,bucket.previous);
+                        bucket = bucket.previous;
+                    }else{
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     /** Returns one of the keys with maximal value. */
     public String getMaxKey() {
-        if(integerMap.size()==0) return "";
-        return max.previous.set.iterator().next();
+        return max.previous.s;
     }
 
     /** Returns one of the keys with Minimal value. */
     public String getMinKey() {
-        if(integerMap.size() == 0) return "";
-        return min.next.set.iterator().next();
+        return min.next.s;
+    }
+
+    public static void main(String[] args) {
+        All_O_one_Data_Structure_432 all_o_one_data_structure_432 = new All_O_one_Data_Structure_432();
+        all_o_one_data_structure_432.inc("hello");
+        all_o_one_data_structure_432.inc("goodbye");
+        all_o_one_data_structure_432.inc("hello");
+        all_o_one_data_structure_432.inc("hello");
+        System.out.println(all_o_one_data_structure_432.getMaxKey());
+        all_o_one_data_structure_432.inc("leet");
+        all_o_one_data_structure_432.inc("code");
+        all_o_one_data_structure_432.inc("leet");
+        all_o_one_data_structure_432.dec("hello");
+        all_o_one_data_structure_432.inc("leet");
+        all_o_one_data_structure_432.inc("code");
+        all_o_one_data_structure_432.inc("code");
+        System.out.println(all_o_one_data_structure_432.getMaxKey());
+
     }
 }
