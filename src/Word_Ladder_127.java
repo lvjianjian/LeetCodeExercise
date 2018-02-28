@@ -26,7 +26,7 @@ import java.util.*;
 public class Word_Ladder_127 {
 
 
-    //基本思路是替换，但是可以用2个set2头走，替换少的那部分
+    //基本思路是替换，但是可以2个set记录头尾部2头走，替换少的那部分
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int n = wordList.size();
         char[] s = null;
