@@ -33,6 +33,22 @@ public class Binary_Tree_Postorder_Traversal_145 {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> r = new LinkedList<>();
         if(root == null) return r;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode temp = stack.pop();
+            r.add(0,temp.val);
+            if(temp.left != null)
+                stack.push(temp.left);
+            if(temp.right != null)
+                stack.push(temp.right);
+        }
+        return r;
+    }
+
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        List<Integer> r = new LinkedList<>();
+        if(root == null) return r;
         Stack<TreeNode> stacks = new Stack<>();
         TreeNode c = root;
         while(!stacks.isEmpty() || c != null){
