@@ -8,7 +8,11 @@
  */
 public class Power_of_Three_326 {
 
-    public boolean isPowerOfThree(int n) {
+    public boolean isPowerOfThree(int num) {
+        return (Math.log10(num) / Math.log10(3)) % 1 == 0; //这题log不可以
+    }
+
+    public boolean isPowerOfThree3(int n) {
         return n > 0 && (Math.pow(3, Math.ceil(Math.log(0x7fffffff) / Math.log(3))) % n == 0);
     }
 

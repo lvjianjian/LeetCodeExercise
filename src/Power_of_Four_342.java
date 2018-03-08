@@ -10,6 +10,6 @@
  */
 public class Power_of_Four_342 {
     public boolean isPowerOfFour(int num) {
-        return (Math.log(num) / Math.log(4)) % 1 == 0;
+        return (Math.log10(num) / Math.log10(4)) % 1 == 0; //这题log也可以
     }
 }
