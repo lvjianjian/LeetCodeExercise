@@ -3,6 +3,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import tool.LowercaseWordTrieNode;
+
 /**
  * Created by zhongjianlv on 2018/2/9
  * <p>
@@ -25,33 +27,7 @@ import java.util.Set;
  * You may assume that all inputs are consist of lowercase letters a-z.
  */
 public class Word_Search_II_212 {
-    //使用字典树
-    class TrieNode {
-        TrieNode[] next;
-        String word;
 
-        public TrieNode() {
-            next = new TrieNode[26];
-            word = null;
-        }
-    }
-
-    private TrieNode buildRoot(String[] words) {
-        TrieNode root = new TrieNode();
-        TrieNode p;
-        for (String word : words) {
-            p = root;
-            for (char c : word.toCharArray()) {
-                int index = c - 'a';
-                if (p.next[index] == null) {
-                    p.next[index] = new TrieNode();
-                }
-                p = p.next[index];
-            }
-            p.word = word;
-        }
-        return root;
-    }
 
     public List<String> findWords(char[][] board, String[] words) {
         List<String> result = new ArrayList<>();
@@ -59,7 +35,7 @@ public class Word_Search_II_212 {
         if (r == 0) return result;
         int c = board[0].length;
         if (c == 0) return result;
-        TrieNode root = buildRoot(words);
+        LowercaseWordTrieNode root = LowercaseWordTrieNode.buildRoot(words);
         for (int i = 0; i < r; ++i) {
             for (int j = 0; j < c; ++j) {
                 help(board, root, i, j, result);
@@ -68,23 +44,23 @@ public class Word_Search_II_212 {
         return result;
     }
 
-    private void help(char[][] board, TrieNode node, int i, int j, List<String> result) {
-        if(node == null) return;
-        if(node.word != null){
+    private void help(char[][] board, LowercaseWordTrieNode node, int i, int j, List<String> result) {
+        if (node == null) return;
+        if (node.word != null) {
             result.add(node.word);
             node.word = null;
         }
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) return;
         char c = board[i][j];
-        if(c == ' ') return;
-        int index = c-'a';
+        if (c == ' ') return;
+        int index = c - 'a';
 
-        if(node.next[index]!=null){
+        if (node.next[index] != null) {
             board[i][j] = ' ';
-            help(board, node.next[index], i+1,j,result);
-            help(board, node.next[index], i-1,j,result);
-            help(board, node.next[index], i,j+1,result);
-            help(board, node.next[index], i,j-1,result);
+            help(board, node.next[index], i + 1, j, result);
+            help(board, node.next[index], i - 1, j, result);
+            help(board, node.next[index], i, j + 1, result);
+            help(board, node.next[index], i, j - 1, result);
             board[i][j] = c;
         }
     }
