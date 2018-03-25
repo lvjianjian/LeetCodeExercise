@@ -1,5 +1,4 @@
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by zhongjianlv on 18-3-25.
@@ -17,6 +16,53 @@ import java.util.TreeMap;
  * Note: Length of the given array will be not exceed 2000 and the answer is guaranteed to be fit in 32-bit signed int.
  */
 public class Number_of_Longest_Increasing_Subsequence_673 {
+
+
+    //速度慢
+    public int findNumberOfLIS2(int[] nums) {
+        int length = nums.length;
+        if (length == 0) return 0;
+        List<TreeMap<Integer, Integer>> r = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = r.size() - 1; j >= -1; j--) {
+                if (j == -1) {
+                    if (j + 1 >= r.size()) {
+                        r.add(new TreeMap<>());
+                        r.get(j + 1).put(nums[i], 1);
+                    } else {
+                        TreeMap<Integer, Integer> map1 = r.get(j + 1);
+                        map1.put(nums[i], map1.getOrDefault(nums[i], 0) + 1);
+                    }
+                    break;
+                }
+                TreeMap<Integer, Integer> map = r.get(j);
+                NavigableMap<Integer, Integer> temp = map.headMap(nums[i], false);
+                if (temp != null && temp.size() != 0) {
+                    int all = 0;
+                    Iterator<Integer> iterator = temp.values().iterator();
+                    while (iterator.hasNext()) {
+                        all += iterator.next();
+                    }
+                    if (j + 1 >= r.size()) {
+                        r.add(new TreeMap<>());
+                        r.get(j + 1).put(nums[i], all);
+                        break;
+                    } else {
+                        TreeMap<Integer, Integer> map1 = r.get(j + 1);
+                        map1.put(nums[i], map1.getOrDefault(nums[i], 0) + all);
+                    }
+                }
+            }
+        }
+        TreeMap<Integer, Integer> map = r.get(r.size() - 1);
+        Iterator<Integer> iterator = map.values().iterator();
+        int num = 0;
+        while (iterator.hasNext()) {
+            num += iterator.next();
+        }
+        return num;
+    }
+
     public int findNumberOfLIS(int[] nums) {
         int length = nums.length;
         if (length == 0) return 0;
@@ -43,19 +89,16 @@ public class Number_of_Longest_Increasing_Subsequence_673 {
             r[i][1] = count;
             if (r[i][0] > max) {
                 max = r[i][0];
-            }
-        }
-
-        for (int i = 0; i < r.length; i++) {
-            if (r[i][0] == max) {
+                num = r[i][1];
+            } else if (r[i][0] == max)
                 num += r[i][1];
-            }
         }
         return num;
     }
 
     public static void main(String[] args) {
         Number_of_Longest_Increasing_Subsequence_673 number_of_longest_increasing_subsequence_673 = new Number_of_Longest_Increasing_Subsequence_673();
-        System.out.println(number_of_longest_increasing_subsequence_673.findNumberOfLIS(new int[]{1,1,1}));
+//        System.out.println(number_of_longest_increasing_subsequence_673.findNumberOfLIS(new int[]{1, 1, 1}));
+        System.out.println(number_of_longest_increasing_subsequence_673.findNumberOfLIS2(new int[]{1, 1, 1, 2, 2, 2, 3, 3, 3}));
     }
 }
