@@ -31,22 +31,36 @@ import java.util.TreeSet;
  * Each element nums[i] is an integer in the range [1, 10000].
  */
 public class Delete_and_Earn_740 {
+    public int deleteAndEarn3(int[] nums) {
+        int[] sum = new int[10002];
+
+        for (int i = 0; i < nums.length; i++) {
+            sum[nums[i]] += nums[i];
+        }
+
+        for (int i = 2; i < sum.length; i++) {
+            sum[i] = Math.max(sum[i - 1], sum[i - 2] + sum[i]);
+        }
+        return sum[10001];
+    }
+
     public int deleteAndEarn2(int[] nums) {
         int[] count = new int[10001];
-        for (int x: nums) count[x]++;
+        for (int x : nums) count[x]++;
         int avoid = 0, using = 0, prev = -1;
 
-        for (int k = 0; k <= 10000; ++k) if (count[k] > 0) {
-            int m = Math.max(avoid, using);
-            if (k - 1 != prev) {
-                using = k * count[k] + m;
-                avoid = m;
-            } else {
-                using = k * count[k] + avoid;
-                avoid = m;
+        for (int k = 0; k <= 10000; ++k)
+            if (count[k] > 0) {
+                int m = Math.max(avoid, using);
+                if (k - 1 != prev) {
+                    using = k * count[k] + m;
+                    avoid = m;
+                } else {
+                    using = k * count[k] + avoid;
+                    avoid = m;
+                }
+                prev = k;
             }
-            prev = k;
-        }
         return Math.max(avoid, using);
     }
 
@@ -85,7 +99,7 @@ public class Delete_and_Earn_740 {
                         r[j] += Math.max(r[j - 2], r[j - 3]);
                 }
             }
-            if(r[j] > max)
+            if (r[j] > max)
                 max = r[j];
         }
         return max;
