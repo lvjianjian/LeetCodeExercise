@@ -24,7 +24,7 @@
  * 1 <= len(bits) <= 1000.
  * bits[i] 总是0 或 1.
  */
-public class One_bit_and_two_bit_Characters {
+public class One_bit_and_two_bit_Characters_717 {
     public boolean isOneBitCharacter(int[] bits) {
         if (bits.length == 1 && bits[0] == 0) return true;
         if (bits[bits.length - 1] == 1) return false;
