@@ -91,7 +91,7 @@ public class Asteroid_Collision_735 {
         for (int i = 0, length = ints.length; i < length; i++) {
             ints[i] = i;
         }
-        System.out.println(System.nanoTime()  - start);
+        System.out.println(System.nanoTime() - start);
 
 
         System.out.println("default arrayList");
@@ -99,7 +99,7 @@ public class Asteroid_Collision_735 {
         for (int i = 0, length = ints.length; i < length; i++) {
             intList.add(i);
         }
-        System.out.println(System.nanoTime()  - start);
+        System.out.println(System.nanoTime() - start);
 
 
         System.out.println("capacity n arraylist");
@@ -107,6 +107,6 @@ public class Asteroid_Collision_735 {
         for (int i = 0, length = ints.length; i < length; i++) {
             intList2.add(i);
         }
-        System.out.println(System.nanoTime()  - start);
+        System.out.println(System.nanoTime() - start);
     }
 }
