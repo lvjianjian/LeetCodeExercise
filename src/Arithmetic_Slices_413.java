@@ -8,7 +8,6 @@
  */
 public class Arithmetic_Slices_413 {
 
-
     public int numberOfArithmeticSlices(int[] A) {
         int num = 0;
         int[] ints = new int[A.length];
